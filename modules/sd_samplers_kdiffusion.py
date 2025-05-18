@@ -31,6 +31,10 @@ samplers_k_diffusion = [
     ('IPNDM', 'sample_ipndm', ['ipndm'], {}),
     ('IPNDM_V', 'sample_ipndm_v', ['ipndm_v'], {}),
     ('DEIS', 'sample_deis', ['deis'], {}),
+    ('Spawner SMEA', 'sample_spawner_smea', ['k_smea'], {"uses_ensd": True}),
+    ('Spawner SMEA (beta)','sample_spawner_smea_beta',['k_smea_nai', 'smea_b'],{"uses_ensd": True}),
+    ('Spawner SMEA Dyn (beta)','sample_spawner_smea_dyn_beta',['k_smea_dyn_nai', 'smea_dyn_e'],{"uses_ensd": True}),
+    ('Spawner SMEA Dyn (beta1)','sample_spawner_smea_dyn_beta1',['k_smea_dyn_nai1', 'smea_dyn_e1'],{"uses_ensd": True}),
 ]
 
 
@@ -50,6 +54,10 @@ sampler_extra_params = {
     'sample_dpmpp_sde': ['s_noise'],
     'sample_dpmpp_2m_sde': ['s_noise'],
     'sample_dpmpp_3m_sde': ['s_noise'],
+    'sample_spawner_smea': ['s_noise', 'eta'],
+    'sample_spawner_smea_beta': ['eta', 's_noise', 'beta'],
+    'sample_spawner_smea_dyn_beta': ['eta_start', 'eta_end', 'eta_exponent', 's_noise', 'beta', 'sigma_max_for_dyn_eta'],
+    'sample_spawner_smea_dyn_beta1': ['eta_start', 'eta_end', 'eta_exponent', 's_noise', 'beta', 'sigma_max_for_dyn_eta'],
 }
 
 k_diffusion_samplers_map = {x.name: x for x in samplers_data_k_diffusion}
